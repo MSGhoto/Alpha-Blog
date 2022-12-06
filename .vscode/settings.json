@@ -1,0 +1,9 @@
+{
+    "emmet.includeLanguages": {
+        "ruby": "html"
+    },
+    "emmet.showSuggestionsAsSnippets": false,
+    "emmet.useInlineCompletions": false,
+    "emmet.optimizeStylesheetParsing": false,
+    "emmet.showAbbreviationSuggestions": false
+}
