@@ -1,4 +1,19 @@
-<h1> Showing Articles<h1>
-<hr>
-<p>Title:<%= @article.title %></p>
-<p>description:<%= @article.description %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StartingRails</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <h1> Showing Articles<h1>
+    <p>Title:<%= @article.title %></p>
+    <p>description:<%= @article.description %></p>
+  </body>
+</html>
