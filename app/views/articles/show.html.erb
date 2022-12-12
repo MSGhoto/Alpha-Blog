@@ -15,5 +15,7 @@
     <h1> Showing Articles</h1>
     <p><b> Title:<%= @article.title %> </b></p>
     <p><b> description: </b> <%= @article.description %></p>
+    <%= link_to 'Article listting page',articles_path%>
+    <%= link_to 'Delete',article_path(@article), method: :delete, data:{confirm:"Are you sure you want to Delete this article?"} %>
   </body>
 </html>
