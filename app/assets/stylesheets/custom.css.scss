@@ -1,0 +1,36 @@
+
+#nav-bar{ 
+    background-color: black !important;
+    text-transform: uppercase;
+}
+.nav-link,.navbar-brand
+{
+    color: white !important;
+}
+#home-container{
+    background-image: url('home-jumbotron.png');
+    background-repeat:no-repeat;
+    background-size: cover;
+    margin-top: 30px;
+    color: white;
+    font-weight: 2em;
+    min-height:450px;
+    display: flex;
+    align-items: center;
+}
+#home-jumbotron{
+}
+
+
+html,
+body {
+  height: 100%;
+}
+#page-content {
+  flex: 1 0 auto;
+}
+/* Other Classes for Page Styling */
+body {
+  background: #9199a1;
+  background: linear-gradient(to right, #a3a6ac, #959da1);
+}

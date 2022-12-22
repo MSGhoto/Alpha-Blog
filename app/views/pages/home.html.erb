@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>StartingRails</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= yield %>
-    <h1>Home</h1>
-    <%= link_to 'Article listting page',articles_path%>
-    <%= link_to 'About page',about_path%>
-  </body>
-</html>
+<div class="container" id="home-container">
+  <div class="jumbotron text-center" id=" home-jumbotron">
+    <h1 class="display-4">Alpha Blogs!</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p class="lead">
+      <a class="btn btn-success btn-lg" href="#" role="button">Sign UP</a>
+    </p>
+  </div>
+</div>

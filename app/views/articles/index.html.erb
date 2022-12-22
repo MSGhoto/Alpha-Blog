@@ -1,22 +1,26 @@
-<h1> Showing Articles Index</h1>
-<p><%= link_to 'New Artical',new_article_path%></p>
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-       <% @article.each do |article| %>
-            <tr>
-                <td> <%= article.title %> </td>
-                <td> <%= article.description %> </td>
-                <td><%= link_to 'Show',article_path(article)%></td>
-                <td><%= link_to 'edit',edit_article_path(article)%></td>
-                <td><%= link_to 'Delete',article_path(article), method: :delete, data:{confirm:"Are you sure you want to Delete this article?"} %></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+<h1 class="text-center mt-4"> Showing Articles Index</h1>
+<%= link_to 'New Artical',new_article_path, class: "btn btn-success mt-4" %>
+
+<div class="container">
+    <% @article.each do |article| %>
+       <div class="row justify-content-md-center">
+            <div class="col-8 mt-4">
+                <div class="card text-center shadow mb-5 bg-body rounded">
+                    <div class="card-header fst-italic">
+                        by: Mohammad Suleman
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"> <%= link_to article.title,article_path(article),class:"link-success text-capitalize text-decoration-none" %> </h5>
+                        <p class="card-text"> <%= truncate(article.description, length: 200) %> </p>
+                        <a href="#" class="btn btn-outline-primary">Show</a>
+                        <a href="#" class="btn btn-outline-info">Edit</a>
+                        <a href="#" class="btn btn-outline-danger">Delete</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%end%>
+</div>

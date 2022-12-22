@@ -1,19 +1,2 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>StartingRails</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= yield %>
-    <h1>About Us</h1>
-    <%= link_to 'Article listting page',articles_path%>
-    <%= link_to 'Home page',root_path%>
-  </body>
-</html>
+<h1>About Us</h1>
+<%= link_to 'Article listting page',articles_path%> | <%= link_to 'Home page',root_path%>
