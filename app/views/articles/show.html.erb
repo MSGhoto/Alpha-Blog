@@ -1,21 +1,26 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>StartingRails</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= yield %>
-    <h1> Showing Articles</h1>
-    <p><b> Title:<%= @article.title %> </b></p>
-    <p><b> description: </b> <%= @article.description %></p>
-    <%= link_to 'Article listting page',articles_path%>
-    <%= link_to 'Delete',article_path(@article), method: :delete, data:{confirm:"Are you sure you want to Delete this article?"} %>
-  </body>
-</html>
+<div class="container">
+<h2 class="text-center mt-4"> Title: <%= @article.title %> </h2>
+    
+    <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+            <div class="card text-center shadow mb-5 bg-body rounded">
+                <div class="card-header fst-italic">
+                    by: Mohammad Suleman
+                </div>
+                <div class="card-body">
+                    <div class="card-text text-start"> 
+                        <%= simple_format(@article.description) %> 
+                    </div>
+                    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
+                    <%= link_to "Delete", article_path(article), data: { "turbo-method": :delete , confirm: "Are you sure?"}, class: "btn btn-outline-danger" %>
+                </div>
+                <div class="card-footer text-muted">
+                    <small> created <%= time_ago_in_words(@article.created_at)%> ago,
+                        updated <%= time_ago_in_words(@article.updated_at)%> ago 
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
