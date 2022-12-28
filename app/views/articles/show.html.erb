@@ -1,5 +1,5 @@
 <div class="container">
-<h2 class="text-center mt-4"> Title: <%= @article.title %> </h2>
+    <h2 class="text-center mt-4"> Title: <%= @article.title %> </h2>
     
     <div class="row justify-content-md-center">
         <div class="col-8 mt-4">
@@ -21,6 +21,8 @@
                 </div>
             </div>
         </div>
+
+        <small class="text-center mt-3 mb-3"><%= link_to '[Return Article listting page]',articles_path %></small>
     </div>
-    
+
 </div>
