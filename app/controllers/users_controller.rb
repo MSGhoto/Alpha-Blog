@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
+  before_action :set_user, only:[:show,:edit,:update]
 
     def show
-        @user = User.find(params[:id])
-        @article = @user.Articles.paginate(page: params[:page], per_page: 5)
+      @article = @user.Articles.paginate(page: params[:page], per_page: 5)
     end
 
     def index
@@ -15,24 +15,25 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find(params[:id])
+
     end
 
     def update
-        @user = User.find(params[:id])
-        if @user.update(user_params)
-          flash[:success] = "Account was successfully updated"
-          redirect_to @user
-        else
-          flash[:error] = "Something went wrong, account could not be Updated"
-          render 'edit'
-        end
+      
+      if @user.update(user_params)
+        flash[:success] = "Account was successfully updated"
+        redirect_to @user
+      else
+        flash[:error] = "Something went wrong, account could not be Updated"
+        render 'edit'
+      end
     end
     
 
     def create
         @user = User.new(user_params)
         if @user.save
+          session[:user_id] = @user.id
           flash[:success] = "Wellcome to Alpha Blogs #{@user.username} successfully created"
           redirect_to @user
         else
@@ -46,6 +47,10 @@ class UsersController < ApplicationController
     
     def user_params
         params.require(:user).permit(:username, :email, :password)
+    end
+
+    def set_user
+      @user = User.find(params[:id])
     end
     
 end
