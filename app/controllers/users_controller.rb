@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only:[:show,:edit,:update]
-
+  before_action :set_user, only:[:show,:edit,:update,:destroy]
+  before_action :require_user, only:[:edit,:update,:destroy]
+  before_action :require_same_user, only:[:edit,:update,:destroy]
     def show
       @article = @user.Articles.paginate(page: params[:page], per_page: 5)
     end
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
     end
 
     def update
-      
+
       if @user.update(user_params)
         flash[:success] = "Account was successfully updated"
         redirect_to @user
@@ -41,6 +42,16 @@ class UsersController < ApplicationController
           render 'new'
         end
     end
+
+    def destroy
+      
+      @user.destroy
+      session[:user_id] = nil
+      flash[:alert]="User account and articles are deleted!"
+      redirect_to root_path
+
+    end
+    
     
 
     private
@@ -52,5 +63,13 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
-    
+
+    def require_same_user
+      if current_user != @user
+        flash[:alert]="You can only change your profile!"
+        redirect_to user_path(@user)
+      end
+    end
+
+
 end

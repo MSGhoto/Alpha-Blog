@@ -16,9 +16,11 @@
                         Articles
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li>
-                            <%= link_to "New Article",new_article_path, class:"dropdown-item" %>
-                        </li>
+                        <% if logged_in? %>
+                            <li>
+                                <%= link_to "New Article",new_article_path, class:"dropdown-item" %>
+                            </li>
+                        <%end%>
                         <li>
                             <%= link_to "Articles Listing",articles_path, class:"dropdown-item" %>
                         </li>
@@ -31,11 +33,27 @@
                 </li>
                 
                 <% if logged_in?%>
-                    <li class="nav-item">
-                        <%= link_to current_user.username,user_path(current_user),class:"nav-link"%>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Logout",logout_path,data: { "turbo-method": :delete},class:"nav-link"%>
+                    <li class="nav-item dropdown">
+                        
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            [ <%=current_user.username%> ]
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li>
+                                <%= link_to "View Profile",user_path(current_user),class:"dropdown-item"%>
+                            </li>
+                            <li>
+                                <%= link_to "Edit Profile",edit_user_path(current_user),class:"dropdown-item"%>
+                            </li>
+                            <li>
+                                <%= link_to "Logout",logout_path,data: { "turbo-method": :delete},class:"dropdown-item"%>
+                            </li>
+                            <li>
+                                <%= link_to "Delete Profile",user_path(current_user),
+                                data: { "turbo-method": :delete , turbo_confirm: "Are you sure?, Every data about user and articles will be deleted"},class:"dropdown-item text-danger"%>
+                            </li>
+                            
+                        </ul>
                     </li>
                 <% else %>
                     <li class="nav-item">
